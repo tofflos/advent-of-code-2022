@@ -23,7 +23,7 @@ class Main {
 
     public static void main(String[] args) throws Exception {
 
-        var score1 = Files.lines(Paths.get("1.in"))
+        var score1 = Files.lines(Paths.get("2.in"))
                 .mapToInt(line -> {
                     var t = line.split(" ");
                     var p = findByOpponentAndSelf(t[0], t[1]);
@@ -33,7 +33,7 @@ class Main {
 
         System.out.println("Day 2a: " + score1);
 
-        var score2 = Files.lines(Paths.get("1.in"))
+        var score2 = Files.lines(Paths.get("2.in"))
                 .mapToInt(line -> {
                     var t = line.split(" ");
                     var p = findByOpponentAndOutcome(t[0], t[1]);
