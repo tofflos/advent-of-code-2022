@@ -40,7 +40,7 @@ class Main {
                     return p.self_points + p.outcome_points;
                 })
                 .sum();
-        
+
         System.out.println("Day 2b: " + score2);
     }
 
@@ -53,7 +53,7 @@ class Main {
 
     static Permutation findByOpponentAndOutcome(String opponent, String outcome) {
         return permutations.stream()
-                .filter(r -> r.opponent.equals(opponent)&& r.outcome.equals(outcome))
+                .filter(r -> r.opponent.equals(opponent) && r.outcome.equals(outcome))
                 .findAny()
                 .orElseThrow();
     }
