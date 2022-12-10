@@ -42,7 +42,7 @@ class Main {
 
         System.out.println("Day 7a: " + part1);
 
-        var total = 7000000L;
+        var total = 70000000;
         var unused = total - root.size();
 
         var part2 = traverse(root).stream()
@@ -56,16 +56,13 @@ class Main {
     }
 
     static List<Directory> traverse(Directory directory) {
-        var directories = new ArrayList<Directory>();
-
-        directory.children().stream()
-                .filter(node -> node instanceof Directory)
-                .forEach(d -> {
-                    directories.add((Directory) d);
-                    directories.addAll(traverse((Directory) d));
-                });
-
-        return directories;
+        return directory.children().stream()
+                .filter(Directory.class::isInstance)
+                .map(Directory.class::cast)
+                .<Directory>mapMulti((dir, consumer) -> {
+                    consumer.accept(dir);
+                    traverse(dir).forEach(consumer::accept);
+                }).toList();
     }
 }
 
